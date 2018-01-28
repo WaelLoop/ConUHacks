@@ -21,7 +21,7 @@ void setup()
   if (finger.verifyPassword()) {
     Serial.println("\nFound fingerprint sensor!");
   } else {
-    Serial.println("Did not find fingerprint sensor :(");
+    Serial.println("Did not find fingerprint sensor.");
     while (1) { delay(1); }
   }
 }
@@ -31,7 +31,6 @@ void loop(){
   
   finger.getTemplateCount();
   int numberOfEntries = (int) finger.templateCount;
-  Serial.println(numberOfEntries);
   
   id = numberOfEntries+1;
   if(id>=127) Serial.println("Max memory reached, cannot enroll any more fingers.");
@@ -160,7 +159,6 @@ uint8_t getFingerprintEnroll() {
     return p;
   }   
   
-  Serial.print("ID "); Serial.println(id);
   p = finger.storeModel(id);
   if (p == FINGERPRINT_OK) {
     Serial.println("Stored! Thank you!");
