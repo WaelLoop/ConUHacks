@@ -7,7 +7,7 @@
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 uint8_t id;
-const int startPin = 5;
+const int startPin = 2;
 
 //variables will change
 int startButtonState = 0;
@@ -36,7 +36,6 @@ void setup()
 void loop(){
 
    Serial.println("\nPlease press start to enroll a finger.");
-
   //get button input for start and put here
    do{
      startButtonState = digitalRead(startPin);
@@ -189,5 +188,4 @@ uint8_t getFingerprintEnroll() {
     return p;
   }   
 }
-
 

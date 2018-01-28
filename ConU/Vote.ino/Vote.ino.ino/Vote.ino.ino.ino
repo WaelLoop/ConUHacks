@@ -12,9 +12,9 @@ String name1;
 int choice2 = 0;
 String name2;
 
-const int startPin = 5;
-const int whitePin = 7; //choice 1
-const int bluePin = 2;  //choice 2
+const int startPin = 2;
+const int whitePin = 3; //choice 1
+const int bluePin = 4;  //choice 2
 
 //variables will change
 int startButtonState = 0;
@@ -65,9 +65,9 @@ void loop() {
   Serial.println("\nPlease press start to vote.");
 
   //get button input for start and put here
-   do{
-     startButtonState = digitalRead(startPin);
-   }while(startButtonState != HIGH);
+  do{
+    startButtonState = digitalRead(startPin);
+    }while(startButtonState != HIGH);
 
   //get slot of finger scanned, if not enrolled returns 0, -1 if error, slot if good
   Serial.println("Please place your right thumb on the scanner to vote.");
@@ -118,7 +118,7 @@ void vote(int voterID){
   //update voting status of voter
   voters[voterID] = 1; 
 
-  Serial.println("Your vote was casted!");
+  Serial.println("Your vote was cast!");
   stat = true;
 }
 
@@ -205,6 +205,4 @@ int getFinger(){
   //if found a match, return the slot # (id)
   return (int) finger.fingerID;
 }
-
-
 
