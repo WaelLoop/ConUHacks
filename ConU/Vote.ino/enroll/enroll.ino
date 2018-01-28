@@ -7,6 +7,10 @@
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 uint8_t id;
+const int startPin = 5;
+
+//variables will change
+int startButtonState = 0;
 
 void setup()  
 {
@@ -24,11 +28,20 @@ void setup()
     Serial.println("Did not find fingerprint sensor.");
     while (1) { delay(1); }
   }
+  //initializing the button inputs
+  pinMode(startPin, INPUT);
 }
 
 
 void loop(){
-  
+
+   Serial.println("\nPlease press start to enroll a finger.");
+
+  //get button input for start and put here
+   do{
+     startButtonState = digitalRead(startPin);
+   }while(startButtonState != HIGH);
+   
   finger.getTemplateCount();
   int numberOfEntries = (int) finger.templateCount;
   
